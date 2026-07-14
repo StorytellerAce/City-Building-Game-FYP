@@ -8,8 +8,8 @@ load_dotenv()
 
 class GeminiService:
     def __init__(self):
-        # api_key = os.getenv("GEMINI_API_KEY") or "AIzaSyB_Eaah8bimInJW955lkhScfyNYW8b25zw"
-        api_key = ""
+        # api_key = os.getenv("GEMINI_API_KEY")
+        api_key = "AIzaSyA615wi-4DkphbYt1HBp1YnphdcTJQ5EFo"
         if not api_key:
             raise ValueError("GEMINI_API_KEY is not set.")
 

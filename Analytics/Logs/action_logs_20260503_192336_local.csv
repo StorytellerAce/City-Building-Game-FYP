@@ -1,0 +1,24 @@
+﻿Turn,TimeSinceSessionStart,ActionType,BuildingType,PositionX,PositionY,TargetBuildingLevelBefore,TargetBuildingLevelAfter,GoldBefore,GoldAfter,APBefore,APAfter,WasValid,Notes
+1,10.05364,Build,SmallHouse,5,14,1,1,4000,2750,3,2,1,
+1,12.40314,Build,SmallHouse,5,18,1,1,2750,2250,2,1,1,
+1,14.47093,Build,SmallHouse,5,22,1,1,2250,1750,1,0,1,
+2,23.11907,Build,SmallHouse,5,26,1,1,1750,1452,3,2,1,
+2,24.85358,Build,SmallHouse,5,30,1,1,1452,952,2,1,1,
+2,27.33562,Build,SmallHouse,5,34,1,1,952,452,1,0,1,
+3,52.85244,Build,SmallHouse,5,38,1,1,452,1306,3,2,1,
+3,65.31059,Build,Supply,32,42,1,1,1306,1306,2,2,0,No road access for building
+3,66.79315,Build,SmallHouse,5,42,1,1,1306,806,2,1,1,
+3,69.84325,Build,SmallHouse,5,46,1,1,806,806,1,1,0,No road access for building
+4,76.09289,Build,SmallHouse,31,43,1,1,806,1978,3,3,0,No road access for building
+4,79.67626,Build,Supply,5,46,1,1,1978,1978,3,3,0,No road access for building
+4,86.67587,Build,SmallHouse,5,46,1,1,1978,1978,3,3,0,No road access for building
+4,131.531,Build,SmallHouse,5,46,1,1,1978,1328,3,2,1,
+4,191.3446,Build,SmallHouse,-2,42,1,1,1328,1228,2,2,0,Can't place building at specified location
+4,192.0846,Build,SmallHouse,-2,42,1,1,1228,1228,2,2,0,Can't place building at specified location
+4,192.3648,Build,SmallHouse,-2,42,1,1,1228,1228,2,2,0,Can't place building at specified location
+4,193.0084,Build,SmallHouse,-2,42,1,1,1228,1228,2,2,0,Can't place building at specified location
+4,193.2451,Build,SmallHouse,-2,42,1,1,1228,1228,2,2,0,Can't place building at specified location
+4,193.5432,Build,SmallHouse,-2,42,1,1,1228,1228,2,2,0,Can't place building at specified location
+4,199.6924,Build,SmallHouse,-2,42,1,1,1228,1228,2,2,0,Can't place building at specified location
+4,200.686,Build,SmallHouse,-2,43,1,1,1228,1228,2,2,0,Can't place building at specified location
+4,202.08,Build,SmallHouse,-2,35,1,1,1228,1228,2,2,0,Can't place building at specified location

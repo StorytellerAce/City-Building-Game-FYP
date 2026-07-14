@@ -6,7 +6,10 @@ public class CameraManager : MonoBehaviour
     private Vector3 currentInput;
 
     [SerializeField] private float minX = 17f;
+    [SerializeField] private float maxX = 40f;
+
     [SerializeField] private float minY = 9f;
+    [SerializeField] private float maxY = 45f;
 
     private void Start()
     {
@@ -23,13 +26,20 @@ public class CameraManager : MonoBehaviour
     {
         if (currentInput != Vector3.zero)
         {
-            Vector3 move = Quaternion.Euler(0, 30, 0) * currentInput.normalized * moveSpeed * Time.deltaTime;
+            Vector3 move =
+                Quaternion.Euler(0, 30, 0) *
+                currentInput.normalized *
+                moveSpeed *
+                Time.deltaTime;
+
             transform.position += move;
         }
 
         Vector3 pos = transform.position;
-        pos.x = Mathf.Max(pos.x, minX);
-        pos.y = Mathf.Max(pos.y, minY);
+
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
         transform.position = pos;
     }
 

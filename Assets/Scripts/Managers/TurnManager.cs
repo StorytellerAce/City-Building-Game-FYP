@@ -117,6 +117,6 @@ public class TurnManager : MonoBehaviour
         ResultData.FinalPopulation = resourceService.CurrentPopulation;
         ResultData.FinalSatisfaction = resourceService.AverageSatisfactionIndex;
 
-        SceneManager.LoadScene("EndScene");
+        SceneManager.LoadScene(SceneName.EndScene.ToString());
     }
 }

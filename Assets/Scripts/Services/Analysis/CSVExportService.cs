@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
-using UnityEngine;
 using MyGame;
+using UnityEngine;
 
 public class CsvExportService
 {
@@ -15,7 +15,7 @@ public class CsvExportService
     {
         this.resourceService = resourceService;
     }
-    
+
     public void ExportActionLogs(string filePath, List<ActionLogEntry> logs)
     {
         if (logs == null)
@@ -144,7 +144,12 @@ public class CsvExportService
         }
 
         string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-        string sessionIdShort = resourceService.CurrentSessionId.Substring(0, 6); // optional shorten
+        string sessionId = resourceService.CurrentSessionId;
+
+
+        string sessionIdShort = string.IsNullOrEmpty(sessionId)
+                                ? "local"
+                                : sessionId.Substring(0, Mathf.Min(6, sessionId.Length));
 
         string actionLogPath = Path.Combine(
             folderPath,

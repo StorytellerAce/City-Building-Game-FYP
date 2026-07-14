@@ -7,5 +7,5 @@ public class ObjectiveRequest : AIRequest
     public int estimatedPopulation;
     public int averageFinalPopulation;
     public List<string> objectiveTypes = new List<string> { "ReachPopulation", "BuildCount", "KeepPollutionBelow", "MaintainSatisfactionAbove"};
-    public List<string> difficulty = new List<string> { "Easy", "Medium", "Hard" };
+    public List<string> difficulty = new List<string> { "Easy", "Normal", "Hard" };
 }

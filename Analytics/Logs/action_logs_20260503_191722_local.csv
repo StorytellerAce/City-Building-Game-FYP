@@ -1,0 +1,4 @@
+﻿Turn,TimeSinceSessionStart,ActionType,BuildingType,PositionX,PositionY,TargetBuildingLevelBefore,TargetBuildingLevelAfter,GoldBefore,GoldAfter,APBefore,APAfter,WasValid,Notes
+1,2.686102,Build,SmallHouse,5,14,1,1,4000,2750,3,2,1,
+1,5.237525,Build,SmallHouse,5,18,1,1,2750,2250,2,1,1,
+1,7.252252,Build,SmallHouse,5,22,1,1,2250,1750,1,0,1,

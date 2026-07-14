@@ -60,24 +60,28 @@ public class ObjectiveService
         if (response == null)
         {
             Logger.LogError("Objective response is null.");
+            GenerateFallbackObjective();
             return;
         }
 
         if (!Enum.TryParse(response.objective_type, true, out ObjectiveType objectiveType))
         {
             Logger.LogError($"Invalid objective type from AI: {response.objective_type}");
+            GenerateFallbackObjective();
             return;
         }
 
         if (!Enum.TryParse(response.difficulty, true, out ObjectiveDifficulty difficulty))
         {
             Logger.LogError($"Invalid objective difficulty from AI: {response.difficulty}");
+            GenerateFallbackObjective();
             return;
         }
 
         if (!objectiveTemplates.TryGetValue(objectiveType, out ObjectiveDefinition template))
         {
             Logger.LogError($"No objective template found for type: {objectiveType}");
+            GenerateFallbackObjective();
             return;
         }
 
@@ -114,6 +118,51 @@ public class ObjectiveService
 
         Logger.Log(
             $"Registered dynamic objective: {runtimeDefinition.ObjectiveType}, " +
+            $"Difficulty={difficulty}, Target={runtimeDefinition.targetValue}, " +
+            $"Deadline={runtimeDefinition.deadlineTurn}, " +
+            $"ContinuousTurns={runtimeDefinition.continuousTurnsRequired}"
+        );
+    }
+
+    private void GenerateFallbackObjective()
+    {
+        ObjectiveType objectiveType = ObjectiveType.ReachPopulation;
+        ObjectiveDifficulty difficulty = ObjectiveDifficulty.Normal;
+
+        if (!objectiveTemplates.TryGetValue(objectiveType, out ObjectiveDefinition template))
+        {
+            Logger.LogError($"Fallback failed: No objective template found for type: {objectiveType}");
+            return;
+        }
+
+        // Create a runtime copy to prevent modifying the asset directly
+        ObjectiveDefinition runtimeDefinition = ScriptableObject.Instantiate(template);
+
+        int currentTurn = resourceService.CurrentTurnCount;
+
+        runtimeDefinition.Id = Guid.NewGuid().ToString();
+        runtimeDefinition.ObjectiveType = objectiveType;
+        runtimeDefinition.Title = "Reach Population";
+        runtimeDefinition.Description = "Grow your city population to the target value before the deadline.";
+
+        runtimeDefinition.targetValue =
+            difficultyAdjuster.GetTargetValue(objectiveType, difficulty);
+
+        runtimeDefinition.deadlineTurn =
+            difficultyAdjuster.GetDeadlineTurn(objectiveType, difficulty, currentTurn);
+
+        runtimeDefinition.continuousTurnsRequired =
+            difficultyAdjuster.GetContinuousTurnsRequired(objectiveType, difficulty);
+
+        RegisterObjective(runtimeDefinition);
+
+        if (activeObjective == null)
+        {
+            SetNextActiveObjective();
+        }
+
+        Logger.Log(
+            $"Registered fallback objective: {runtimeDefinition.ObjectiveType}, " +
             $"Difficulty={difficulty}, Target={runtimeDefinition.targetValue}, " +
             $"Deadline={runtimeDefinition.deadlineTurn}, " +
             $"ContinuousTurns={runtimeDefinition.continuousTurnsRequired}"

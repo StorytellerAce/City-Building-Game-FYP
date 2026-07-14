@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Mono.Cecil;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class GameBootstrap : MonoBehaviour
 {
@@ -26,6 +26,7 @@ public class GameBootstrap : MonoBehaviour
     [SerializeField] private NewspaperUI newspaperUI;
     [SerializeField] private List<ObjectiveDefinition> objectiveDefinitions;
     [SerializeField] private BuildingDefinition townHallDefinition;
+    [SerializeField] private TMP_Text sessionIdText;
 
     // testing use
     [SerializeField] private GameObject TestButton;
@@ -47,7 +48,7 @@ public class GameBootstrap : MonoBehaviour
     {
         // Basic services
         TimeService timeService = new TimeService();
-        SessionContext sessionContext = new SessionContext();
+        SessionContext sessionContext = new SessionContext(sessionIdText);
 
         // Game resource services 
         buildingRegistry = new BuildingRegistry();

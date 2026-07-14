@@ -28,7 +28,7 @@ public class AnalyticsServiceTests
         turnService = new TurnService();
         timeService = new TimeService();
         supplyService = new SupplyService();
-        sessionContext = new SessionContext();
+        // sessionContext = new SessionContext();
 
         resourceService = new ResourceService(
             goldService,
