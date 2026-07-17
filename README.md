@@ -92,10 +92,7 @@ The project demonstrates the integration of game development, backend services, 
 
 ## Gameplay Flow
 
-```
 <img width="569" height="744" alt="image" src="https://github.com/user-attachments/assets/a2fc1ce5-a88a-42a1-9dd2-0f973766b797" />
-
-```
 
 ---
 
